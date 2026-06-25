@@ -1,0 +1,13 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+const { projects } = Astro.props;
+---
+
+<section id="work" class="container work-section">
+    <div class="section-label">Work</div>
+
+    <div class="work-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+</section>

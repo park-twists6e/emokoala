@@ -1,0 +1,11 @@
+---
+const { project } = Astro.props;
+---
+
+<a class="work-card" href={`/work/${project.slug}`}>
+    <div class="work-thumb">
+        <img src={project.image} alt={project.title} />
+    </div>
+    <h2>{project.title}</h2>
+    <p>{project.description}</p>
+</a>
