@@ -1,0 +1,13 @@
+---
+const { category } = Astro.props;
+---
+
+<a class="work-card" href={`/work/${category.id}`}>
+    <div class="work-thumb">
+        <img src={category.thumbnail} alt={category.title} />
+    </div>
+
+    <h2>{category.title}</h2>
+
+    <p>{category.description}</p>
+</a>

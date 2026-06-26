@@ -1,0 +1,13 @@
+---
+import CategoryCard from "./CategoryCard.astro";
+
+const { categories } = Astro.props;
+---
+
+<section id="work" class="container work-section">
+    <div class="section-label">Work</div>
+
+    <div class="work-grid">
+        {categories.map((category: any) => <CategoryCard category={category} />)}
+    </div>
+</section>

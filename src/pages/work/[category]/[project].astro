@@ -1,0 +1,137 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { categories } from "../../../data/categories";
+import { projects } from "../../../data/projects";
+import { slugify } from "../../../lib/slug";
+
+export function getStaticPaths() {
+    const paths = [];
+
+    for (const category of Object.values(categories)) {
+        if (!category.enabled) continue;
+
+        const categoryProjects = projects.filter(
+            (project) =>
+                project.enabled && project.categories.includes(category.id),
+        );
+
+        for (const project of categoryProjects) {
+            paths.push({
+                params: {
+                    category: category.id,
+                    project: slugify(project.title),
+                },
+                props: {
+                    category,
+                    project,
+                },
+            });
+        }
+    }
+
+    return paths;
+}
+
+const { category, project } = Astro.props;
+
+const relatedProjects = projects.filter(
+    (item) =>
+        item.enabled &&
+        item.title !== project.title &&
+        item.categories.includes(category.id),
+);
+---
+
+<Layout title={`${project.title} | ${category.title}`}>
+    <main class="container category-page">
+        <a class="back-link" href={`/work/${category.id}`}
+            >← Back to {category.title}</a
+        >
+
+        <header class="category-header">
+            <p class="section-label">{category.title}</p>
+            <h1>{project.title}</h1>
+            <p>{project.description}</p>
+        </header>
+
+        <section class="featured-project single-project">
+            <div
+                class:list={{
+                    "featured-media": true,
+                    portrait: project.media.portrait,
+                }}
+            >
+                {
+                    project.media.type === "video" && project.media.video ? (
+                        <video
+                            controls
+                            poster={project.media.poster || project.media.hero}
+                            loop={project.media.loop}
+                            autoplay={project.media.autoPlay}
+                            muted={project.media.autoPlay}
+                            playsinline
+                        >
+                            <source
+                                src={project.media.video}
+                                type="video/mp4"
+                            />
+                        </video>
+                    ) : (
+                        <img src={project.media.poster} alt={project.title} />
+                    )
+                }
+            </div>
+
+            <div class="featured-info">
+                <p class="section-label">Details</p>
+
+                <div class="project-meta-inline">
+                    <span>{project.role}</span>
+                    <span>{project.year}</span>
+                    <span>{project.software.join(", ")}</span>
+                </div>
+            </div>
+        </section>
+
+        {
+            project.media.gallery.length > 0 && (
+                <section class="category-gallery">
+                    <div class="section-label">Gallery</div>
+
+                    <div class="image-gallery">
+                        {project.media.gallery.map((image) => (
+                            <img src={image} alt={project.title} />
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+
+        {
+            relatedProjects.length > 0 && (
+                <section class="category-gallery">
+                    <div class="section-label">More {category.title}</div>
+
+                    <div class="work-grid">
+                        {relatedProjects.map((item) => (
+                            <a
+                                class="work-card"
+                                href={`/work/${category.id}/${slugify(item.title)}`}
+                            >
+                                <div class="work-thumb">
+                                    <img
+                                        src={item.media.hero}
+                                        alt={item.title}
+                                    />
+                                </div>
+
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+    </main>
+</Layout>

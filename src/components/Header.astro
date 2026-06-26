@@ -1,12 +1,13 @@
-<header class="site-header">
-    <a class="brand" href="/">Emokoala</a>
+---
+const { profile } = Astro.props;
+---
 
+<header class="site-header">
+    <a class="brand brand-with-mark" href="/">
+        <img src="/brand/emokoala-logo.png" alt="" />
+        <span>{profile.name}</span>
+    </a>
     <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/#work">Work</a>
-        <a href="/work/animation">Animation</a>
-        <a href="/work/editing">Editing</a>
-        <a href="/#about">About</a>
-        <a href="mailto:hello@example.com">Contact</a>
+        {profile.navigation.map((item) => <a href={item.href}>{item.title}</a>)}
     </nav>
 </header>

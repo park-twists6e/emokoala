@@ -3,29 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import FeaturedReel from "../components/FeaturedReel.astro";
-import ProjectGrid from "../components/ProjectGrid.astro";
+import CategoryGrid from "../components/CategoryGrid.astro";
 import { projects } from "../data/projects";
+import { categories } from "../data/categories";
+const visibleCategories = Object.values(categories)
+	.filter((category) => category.enabled)
+	.sort((a, b) => a.order - b.order);
 ---
 
 <Layout title="Emokoala">
 	<main>
 		<Hero />
-		
+
 		<FeaturedReel />
 
-		<ProjectGrid projects={projects} />
+		<!-- <ProjectGrid projects={projects} /> -->
+		<CategoryGrid categories={visibleCategories} />
+		<section id="about" class="container about-section about-with-mark">
+			<div class="about-mark">
+				<img
+					src="/brand/emokoala-logo.png"
+					alt="Emokoala character mark"
+				/>
+			</div>
 
-		<section id="about" class="container about-section">
 			<div>
 				<p class="section-label">About</p>
 				<h2>Animator, editor, and visual designer.</h2>
+				<p>
+					Emokoala creates character-driven visual work across
+					animation, editing, background art, and design.
+				</p>
 			</div>
-
-			<p>
-				Emokoala creates character-driven visual work across animation,
-				editing, background art, and design. This portfolio highlights
-				selected projects, process work, and finished pieces.
-			</p>
 		</section>
 
 		<footer class="footer container">

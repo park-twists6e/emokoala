@@ -1,0 +1,133 @@
+# Emokoala Portfolio - Developer Cheat Sheet
+
+==================================================
+NODE / ASTRO
+==================================================
+
+Use Node 22
+
+nvm use 22
+
+Start development server
+
+npm run dev
+
+==================================================
+FFMPEG
+==================================================
+
+Extract poster image from video
+
+./ffmpeg -ss 00:00:24 -i "video.mp4" -frames:v 1 -update 1 Poster.jpg
+
+Extract thumbnail
+
+./ffmpeg -ss 00:00:24 -i "video.mp4" -vf "scale=640:-1" -frames:v 1 -update 1 Thumb.jpg
+
+Resize image
+
+./ffmpeg -i image.png -vf "scale=1600:-1" hero.webp
+
+Convert image to WebP
+
+./ffmpeg -i image.png hero.webp
+
+==================================================
+YT-DLP
+==================================================
+
+List formats
+
+./yt-dlp_macos -F URL
+
+Download format
+
+./yt-dlp_macos -f FORMAT_ID URL
+
+Example
+
+./yt-dlp_macos -f 4588 URL
+
+==================================================
+PUBLIC FOLDER
+==================================================
+
+Anything inside
+
+public/
+
+is referenced from the website root.
+
+Example
+
+public/projects/demo-reel/reel.mp4
+
+becomes
+
+/projects/demo-reel/reel.mp4
+
+Never include "public" in the URL.
+
+==================================================
+PROJECT STRUCTURE
+==================================================
+
+src/
+    components/
+    pages/
+    data/
+    lib/
+
+public/
+    projects/
+        demo-reel/
+        background-art/
+        characters/
+
+==================================================
+ROUTING
+==================================================
+
+Home
+
+↓
+
+Category
+
+↓
+
+Project
+
+Example
+
+/
+
+↓
+
+/work/background-art
+
+↓
+
+/work/background-art/forest-at-dawn
+
+==================================================
+ASSET WORKFLOW
+==================================================
+
+1. Copy original artwork/video.
+2. Generate poster.
+3. Generate thumbnail.
+4. Convert to WebP if appropriate.
+5. Copy into public/projects/<project-name>.
+6. Update projects.ts.
+7. Verify in browser.
+
+==================================================
+TODO
+==================================================
+
+- Asset generation script
+- AWS CDK deployment
+- CloudFront
+- S3
+- CMS

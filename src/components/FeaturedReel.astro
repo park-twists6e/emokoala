@@ -1,7 +1,29 @@
-<section class="container reel-section">
-    <div class="section-label">Featured Reel</div>
+---
+import FeaturedVideo from "./FeaturedVideo.astro";
+import { projects } from "../data/projects";
 
-    <div class="reel-card">
-        <div class="reel-placeholder">Demo Reel</div>
-    </div>
+const featuredProject = projects.find(
+    (project) => project.enabled && project.featured,
+);
+console.log({featuredProject});
+---
+
+<section id="reel" class="container reel-section">
+
+    {
+        featuredProject ? (
+            <div class="section-label">Featured Reel</div>
+        
+            <FeaturedVideo
+                poster={
+                    featuredProject.media.poster || featuredProject.media.hero
+                }
+                video={featuredProject.media.video}
+            />
+        ) : (
+            // <div class="empty-state">
+                <p></p>
+            // </div>
+        )
+    }
 </section>
