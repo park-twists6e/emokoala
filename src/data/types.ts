@@ -6,9 +6,10 @@ export interface ProjectMedia {
     poster?: string;
     video?: string;
     gallery: string[];
-    loop?: boolean;
-    autoPlay?: boolean;
-    portrait?: boolean;
+    loop?: boolean; // for video
+    autoPlay?: boolean; // for video
+    portrait?: boolean; // for images
+    showControls?: boolean; //for video
 }
 
 export interface Project {
@@ -22,3 +23,4 @@ export interface Project {
     software: string[];
     year: number;
 }
+

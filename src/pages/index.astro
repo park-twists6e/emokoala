@@ -1,11 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
 import FeaturedReel from "../components/FeaturedReel.astro";
 import CategoryGrid from "../components/CategoryGrid.astro";
-import { projects } from "../data/projects";
 import { categories } from "../data/categories";
+import { profile } from "../data/profile";
+import SupportCard from "../components/SupportCard.astro";
+import Header from "../components/Header.astro";
+
 const visibleCategories = Object.values(categories)
 	.filter((category) => category.enabled)
 	.sort((a, b) => a.order - b.order);
@@ -17,29 +21,13 @@ const visibleCategories = Object.values(categories)
 
 		<FeaturedReel />
 
-		<!-- <ProjectGrid projects={projects} /> -->
 		<CategoryGrid categories={visibleCategories} />
-		<section id="about" class="container about-section about-with-mark">
-			<div class="about-mark">
-				<img
-					src="/brand/emokoala-logo.png"
-					alt="Emokoala character mark"
-				/>
-			</div>
 
-			<div>
-				<p class="section-label">About</p>
-				<h2>Animator, editor, and visual designer.</h2>
-				<p>
-					Emokoala creates character-driven visual work across
-					animation, editing, background art, and design.
-				</p>
-			</div>
-		</section>
+		<About />
 
-		<footer class="footer container">
-			<p>© 2026 Emokoala</p>
-			<a href="mailto:hello@example.com">Contact</a>
-		</footer>
+		<SupportCard support={profile.support} />
+		<!-- <Header profile={profile} /> -->
+
+		<Footer />
 	</main>
 </Layout>

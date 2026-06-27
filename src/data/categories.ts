@@ -15,16 +15,16 @@ export const categories = {
     [CATEGORY.ANIMATION]: {
         id: CATEGORY.ANIMATION,
         title: "Animation",
-        description: "Character animation, motion studies, and finished animation work.",
-        thumbnail: "/public/projects/image/Thumb-BrNg8rN8f2-v3.jpg",
+        description: "Animation showcasing movement, character performance, and storytelling",
+        thumbnail: "/public/projects/image/Thumb-BrNg8rN8f2.jpg",
         enabled: true,
-        order: 1,
+        order: 2,
     },
 
     [CATEGORY.EDITING]: {
         id: CATEGORY.EDITING,
-        title: "Editing",
-        description: "Video editing work focused on pacing, rhythm, story flow, and visual clarity.",
+        title: "Video Editing",
+        description: "Video editing for social media and creative projects",
         thumbnail: "/public/projects/image/Thumb-A6ipUWjkXIS.jpg",
         enabled: true,
         order: 4,
@@ -33,7 +33,7 @@ export const categories = {
     [CATEGORY.BACKGROUND_ART]: {
         id: CATEGORY.BACKGROUND_ART,
         title: "Background Art",
-        description: "Environment art, layouts, and background design pieces.",
+        description: "Background art for webcomics and online projects",
         thumbnail: "/public/projects/image/_background-art/6596373a-0057-4d7d-b9b6-38f8cc4a2d4c_rw_1200_f59e7fd0.png",
         enabled: true,
         order: 3,
@@ -41,10 +41,10 @@ export const categories = {
 
     [CATEGORY.CHARACTERS]: {
         id: CATEGORY.CHARACTERS,
-        title: "Characters",
-        description: "Character concepts, expressions, poses, and visual development.",
-        thumbnail: "/public/projects/image/char3.png",
+        title: "Original Characters",
+        description: "Original character designs and concept artwork",
+        thumbnail: "/public/projects/image/char1.png",
         enabled: true,
-        order: 2,
+        order: 1,
     },
 };

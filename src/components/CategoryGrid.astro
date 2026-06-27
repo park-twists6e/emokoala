@@ -5,9 +5,19 @@ const { categories } = Astro.props;
 ---
 
 <section id="work" class="container work-section">
-    <div class="section-label">Work</div>
+    <br />
+    <div class="section-label">
+        <a class="brand brand-with-mark" href="/">
+            <img src="/brand/emokoala-logo.png" alt="" />
+        </a>
+        My Portfolio
+    </div>
 
     <div class="work-grid">
-        {categories.map((category: any) => <CategoryCard category={category} />)}
+        {
+            categories.map((category: any) => (
+                <CategoryCard category={category} />
+            ))
+        }
     </div>
 </section>

@@ -1,0 +1,70 @@
+---
+import { profile } from "../data/profile";
+---	
+        
+        <section id="about" class="container about-section about-with-mark">
+			<div class="about-mark">
+				<img
+					src="/brand/emokoala-logo.png"
+					alt="Emokoala character mark"
+				/>
+			</div>
+
+			<div>
+				<p class="section-label">About Me</p>
+				<!-- <h2>Animator, editor, and visual designer.</h2> -->
+				<h2>
+					hello! I'm &nbsp;
+					<sub class="emo"><u>emo</u></sub><b class="koala"
+						><i>koala</i></b
+					>
+				</h2>
+				<h3>
+					(you can call me <sub><u>emo</u></sub> or <i>koala</i>)
+				</h3>
+				<p>
+					I create character-driven visual work across animation,
+					editing, background art, and design. &nbsp;
+					<a class="" href="#work" aria-label="Scroll to work"
+						>Feel free to take a look around!</a
+					>
+				</p>
+				
+                <br />
+                <h3>
+					Contact at:
+				</h3>
+
+
+				<div class="about-links">
+
+					<a
+						href={`mailto:${profile.socials.email}`}
+						class="about-link"
+						aria-label="Email"
+					>
+						✉
+					</a>
+
+					<a
+						href={profile.socials.linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="about-link"
+						aria-label="LinkedIn"
+					>
+						in
+					</a>
+
+					<a
+						href={profile.socials.x}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="about-link"
+						aria-label="X"
+					>
+						𝕏 
+					</a>
+				</div>
+			</div>
+		</section>

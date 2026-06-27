@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import { categories } from "../../data/categories";
 import { projects } from "../../data/projects";
+import About from "../../components/About.astro";
+import Footer from "../../components/Footer.astro";
 
 export function getStaticPaths() {
     return Object.values(categories)
@@ -24,15 +26,27 @@ const selectedProject = categoryProjects[0];
 
 <Layout title={`${category.title} | Emokoala`}>
     <main class="container category-page">
-        <a class="back-link" href="/#work">← Back to Work</a>
+        <a class="section-label" href="/#work"
+            >←
+            <!-- <span class="brand brand-with-mark">
+                <img src="/brand/emokoala-logo.png" alt="" />
+            </span> -->
+
+            Back to Portfolio</a
+        >
 
         <header class="category-header">
-            <p class="section-label">Work</p>
+            <p class="section-label">
+                <span class="brand brand-with-mark">
+                    <img src="/brand/emokoala-logo.png" alt="" />
+                </span>
+                {category.title} Portfolio
+            </p>
             <h1>{category.title}</h1>
             <p>{category.description}</p>
         </header>
 
-        {
+        <!-- {
             selectedProject ? (
                 <section class="featured-project">
                     <div class="featured-media">
@@ -75,12 +89,12 @@ const selectedProject = categoryProjects[0];
                     <p>No projects added yet.</p>
                 </div>
             )
-        }
+        } -->
 
         {
             categoryProjects.length > 1 && (
                 <section class="category-gallery">
-                    <div class="section-label">More {category.title}</div>
+                    <div class="section-label">{category.title}</div>
 
                     <div class="work-grid">
                         {categoryProjects.map((project) => (
@@ -95,4 +109,7 @@ const selectedProject = categoryProjects[0];
             )
         }
     </main>
+    <!-- <About /> -->
+
+    <Footer />
 </Layout>

@@ -1,0 +1,47 @@
+---
+const { support } = Astro.props;
+
+if (!support?.enabled) return;
+---
+
+<section id="support" class="container support-section">
+  <div class="support-card">
+    <!-- <div class="support-cover">
+      <img src={support.cover} alt="" />
+    </div> -->
+
+    <div class="support-content">
+      <!-- <div class="support-avatar">
+        <img src={support.avatar} alt="" />
+      </div> -->
+
+      <p class="section-label">Support</p>
+
+      <h2>{support.title}
+            <sub class="emo"><u>emo</u></sub><b class="koala"><i>koala</i></b>
+
+
+      </h2>
+
+      <p>{support.description}</p>
+
+      <ul class="support-perks">
+        {support.perks.map((perk) => (
+          <li>{perk}</li>
+        ))}
+      </ul>
+
+      <a
+        class="support-button"
+        href={support.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {support.buttonText}
+      </a>
+    </div>
+  </div>
+</section>
+
+
+

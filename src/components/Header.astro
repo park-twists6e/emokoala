@@ -4,10 +4,17 @@ const { profile } = Astro.props;
 
 <header class="site-header">
     <a class="brand brand-with-mark" href="/">
-        <img src="/brand/emokoala-logo.png" alt="" />
-        <span>{profile.name}</span>
+        <!-- <img src="/brand/emokoala-logo.png" alt="" /> -->
+        <span>
+            <!-- {profile.name}  -->
+            <sub class="emo"><u>emo</u></sub><b class="koala"><i>koala</i></b>
+        </span>
     </a>
     <nav class="nav">
-        {profile.navigation.map((item) => <a href={item.href}>{item.title}</a>)}
+        {
+            profile.navigation.map((item: { title: string; href: string }) => (
+                <a href={item.href}>{item.title}</a>
+            ))
+        }
     </nav>
 </header>

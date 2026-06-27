@@ -1,0 +1,76 @@
+---
+const { images = [] } = Astro.props;
+---
+
+<div
+  class="lightbox"
+  data-images={JSON.stringify(images)}
+>
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <!-- <button class="lightbox-prev" aria-label="Previous">&#10094;</button> -->
+
+  <img class="lightbox-image" src="" alt="" />
+
+  <!-- <button class="lightbox-next" aria-label="Next">&#10095;</button> -->
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = document.querySelector(".lightbox");
+    if (!lightbox) return;
+
+    const image = lightbox.querySelector(".lightbox-image");
+    const close = lightbox.querySelector(".lightbox-close");
+    const prev = lightbox.querySelector(".lightbox-prev");
+    const next = lightbox.querySelector(".lightbox-next");
+
+    const images = JSON.parse(lightbox.dataset.images || "[]");
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      image.src = images[current];
+      image.onclick = closeLightbox;
+      lightbox.classList.add("open");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      image.src = "";
+    }
+
+    function showPrevious() {
+      current = (current - 1 + images.length) % images.length;
+      image.src = images[current];
+    }
+
+    function showNext() {
+      current = (current + 1) % images.length;
+      image.src = images[current];
+    }
+
+    document.querySelectorAll(".zoomable").forEach((img) => {
+      img.addEventListener("click", () => {
+        openLightbox(Number(img.dataset.index || 0));
+      });
+    });
+
+    close?.addEventListener("click", closeLightbox);
+    prev?.addEventListener("click", showPrevious);
+    next?.addEventListener("click", showNext);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("open")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPrevious();
+      if (event.key === "ArrowRight") showNext();
+    });
+  });
+</script>
