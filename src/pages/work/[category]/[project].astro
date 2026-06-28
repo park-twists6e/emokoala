@@ -86,9 +86,7 @@ const lightboxImages = [
                             <video
                                 class="portfolio-video"
                                 controls={project.media.showControls}
-                                poster={
-                                    project.media.poster || project.media.hero
-                                }
+                                poster={pathFinder(project.media.poster || project.media.hero)}
                                 loop={project.media.loop}
                                 autoplay={project.media.autoPlay}
                                 muted={project.media.autoPlay}
