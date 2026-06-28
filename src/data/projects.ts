@@ -17,7 +17,7 @@ export const projects: Project[] = [
   {
     title: "3D Reel",
     enabled: true,
-    featured: false,
+    featured: true,
     categories: [CATEGORY.ANIMATION],
     description:
       "3D animation reel highlighting animation, editing, timing, and visual storytelling.",

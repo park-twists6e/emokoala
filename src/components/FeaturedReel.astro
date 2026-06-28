@@ -6,7 +6,7 @@ import { pathFinder } from "../lib/paths";
 const featuredProject = projects.find(
     (project) => project.enabled && project.featured,
 );
-console.log({featuredProject});
+// console.log({featuredProject});
 ---
 
 <section id="reel" class="container reel-section">
@@ -16,10 +16,8 @@ console.log({featuredProject});
             <div class="section-label">Featured Reel</div>
         
             <FeaturedVideo
-                poster={
-                    featuredProject.media.poster || featuredProject.media.hero
-                }
-                video={featuredProject.media.video}
+                poster={pathFinder(featuredProject.media.poster || featuredProject.media.hero)}
+                video={pathFinder(featuredProject.media.video)}
             />
         ) : (
             // <div class="empty-state">
