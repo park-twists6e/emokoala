@@ -5,6 +5,7 @@ import { categories } from "../../data/categories";
 import { projects } from "../../data/projects";
 import About from "../../components/About.astro";
 import Footer from "../../components/Footer.astro";
+import { pathFinder } from "../../lib/paths";
 
 export function getStaticPaths() {
     return Object.values(categories)
@@ -26,7 +27,7 @@ const selectedProject = categoryProjects[0];
 
 <Layout title={`${category.title} | Emokoala`}>
     <main class="container category-page">
-        <a class="section-label" href="/#work"
+        <a class="section-label" href={pathFinder("/#work")}
             >←
             <!-- <span class="brand brand-with-mark">
                 <img src="/brand/emokoala-logo.png" alt="" />
@@ -38,7 +39,7 @@ const selectedProject = categoryProjects[0];
         <header class="category-header">
             <p class="section-label">
                 <span class="brand brand-with-mark">
-                    <img src="/brand/emokoala-logo.png" alt="" />
+                    <img src={pathFinder("/brand/emokoala-logo.png")} alt="" />
                 </span>
                 {category.title} Portfolio
             </p>

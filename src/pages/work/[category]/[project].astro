@@ -6,6 +6,7 @@ import { slugify } from "../../../lib/slug";
 import Lightbox from "../../../components/Lightbox.astro";
 import About from "../../../components/About.astro";
 import Footer from "../../../components/Footer.astro";
+import { pathFinder } from "../../../lib/paths";
 
 export function getStaticPaths() {
     const paths = [];
@@ -52,7 +53,7 @@ const lightboxImages = [
 
 <Layout title={`${project.title} | ${category.title}`}>
     <main class="container category-page">
-        <a class="section-label" href={`/work/${category.id}`}
+        <a class="section-label" href={pathFinder(`/work/${category.id}`)}
             >←
             <!-- <span class="brand brand-with-mark">
                 <img src="/brand/emokoala-logo.png" alt="" />
@@ -64,7 +65,7 @@ const lightboxImages = [
         <header class="category-header">
             <p class="section-label">
                 <span class="brand brand-with-mark">
-                    <img src="/brand/emokoala-logo.png" alt="" />
+                    <img src={pathFinder("/brand/emokoala-logo.png")} alt="" />
                 </span>
                 {category.title} Project
             </p>
@@ -94,7 +95,7 @@ const lightboxImages = [
                                 playsinline
                             >
                                 <source
-                                    src={project.media.video}
+                                    src={pathFinder(project.media.video)}
                                     type="video/mp4"
                                 />
                             </video>
@@ -124,7 +125,7 @@ const lightboxImages = [
                         // />
                         <img
                             class="zoomable"
-                            src={project.media.poster || project.media.hero}
+                            src={pathFinder(project.media.poster || project.media.hero)}
                             alt={project.title}
                             data-index="0"
                         />
@@ -152,7 +153,7 @@ const lightboxImages = [
                         {project.media.gallery.map((image, index) => (
                             <img
                                 class="zoomable"
-                                src={image}
+                                src={pathFinder(image)}
                                 alt={project.title}
                                 data-index={index + 1}
                             />
@@ -171,11 +172,11 @@ const lightboxImages = [
                         {relatedProjects.map((item) => (
                             <a
                                 class="work-card"
-                                href={`/work/${category.id}/${slugify(item.title)}`}
+                                href={pathFinder(`/work/${category.id}/${slugify(item.title)}`)}
                             >
                                 <div class="work-thumb">
                                     <img
-                                        src={item.media.hero}
+                                        src={pathFinder(item.media.hero)}
                                         alt={item.title}
                                     />
                                 </div>

@@ -5,6 +5,7 @@ import { profile } from "../data/profile";
 interface Props {
 	title?: string;
 }
+import { pathFinder } from "../lib/paths";
 
 const { title = "Emokoala Portfolio" } = Astro.props;
 ---
@@ -52,7 +53,10 @@ const { title = "Emokoala Portfolio" } = Astro.props;
 			name="apple-mobile-web-app-status-bar-style"
 			content="black-translucent"
 		/>
+		<link rel="icon" type="image/png" href={pathFinder("/brand/emokoala-logo.png")} />
+
 		<title>{title}</title>
+
 	</head>
 
 	<body>

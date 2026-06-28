@@ -1,9 +1,11 @@
 ---
 const { poster, video } = Astro.props;
+import { pathFinder } from "../lib/paths";
+
 ---
 
 <div class="featured-video">
     <video controls preload="metadata" poster={poster}>
-        <source src={video} type="video/mp4" />
+        <source src={pathFinder(video)} type="video/mp4" />
     </video>
 </div>

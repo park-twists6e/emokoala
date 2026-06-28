@@ -1,9 +1,11 @@
 ---
 const { profile } = Astro.props;
+import { pathFinder } from "../lib/paths";
+
 ---
 
 <header class="site-header">
-    <a class="brand brand-with-mark" href="/">
+    <a class="brand brand-with-mark" href={pathFinder("/")}>
         <!-- <img src="/brand/emokoala-logo.png" alt="" /> -->
         <span>
             <!-- {profile.name}  -->
@@ -13,7 +15,7 @@ const { profile } = Astro.props;
     <nav class="nav">
         {
             profile.navigation.map((item: { title: string; href: string }) => (
-                <a href={item.href}>{item.title}</a>
+                <a href={pathFinder(item.href)}>{item.title}</a>
             ))
         }
     </nav>

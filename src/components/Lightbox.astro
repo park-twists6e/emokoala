@@ -1,10 +1,14 @@
 ---
+import { pathFinder } from "../lib/paths";
+
 const { images = [] } = Astro.props;
+
+const fixedImages = images.map((image) => pathFinder(image));
 ---
 
 <div
   class="lightbox"
-  data-images={JSON.stringify(images)}
+  data-images={JSON.stringify(fixedImages)}
 >
   <button class="lightbox-close" aria-label="Close">&times;</button>
   <!-- <button class="lightbox-prev" aria-label="Previous">&#10094;</button> -->

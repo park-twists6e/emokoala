@@ -1,5 +1,6 @@
 ---
 import CategoryCard from "./CategoryCard.astro";
+import { pathFinder } from "../lib/paths";
 
 const { categories } = Astro.props;
 ---
@@ -7,8 +8,8 @@ const { categories } = Astro.props;
 <section id="work" class="container work-section">
     <br />
     <div class="section-label">
-        <a class="brand brand-with-mark" href="/">
-            <img src="/brand/emokoala-logo.png" alt="" />
+        <a class="brand brand-with-mark" href={pathFinder("/")}>
+            <img src={pathFinder("/brand/emokoala-logo.png")} alt="" />
         </a>
         My Portfolio
     </div>

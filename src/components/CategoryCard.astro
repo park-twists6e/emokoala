@@ -1,10 +1,11 @@
 ---
 const { category } = Astro.props;
+import { pathFinder } from "../lib/paths";
 ---
 
-<a class="work-card" href={`/work/${category.id}`}>
+<a class="work-card" href={pathFinder(`/work/${category.id}`)}>
     <div class="work-thumb">
-        <img src={category.thumbnail} alt={category.title} />
+        <img src={pathFinder(category.thumbnail)} alt={category.title} />
     </div>
 
     <h2>{category.title}</h2>

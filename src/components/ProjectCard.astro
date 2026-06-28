@@ -1,14 +1,15 @@
 ---
 import { slugify } from "../lib/slug";
+import { pathFinder } from "../lib/paths";
 
 const { project, category } = Astro.props;
 
-const href = category ? `/work/${category.id}/${slugify(project.title)}` : "#";
+const href = category ? pathFinder(`/work/${category.id}/${slugify(project.title)}`) : "#";
 ---
 
 <a class="work-card" href={href}>
     <div class="work-thumb">
-        <img src={project.media.hero} alt={project.title} />
+        <img src={pathFinder(project.media.hero)} alt={project.title} />
     </div>
 
     <h2>{project.title}</h2>

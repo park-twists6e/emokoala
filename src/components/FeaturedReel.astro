@@ -1,6 +1,7 @@
 ---
 import FeaturedVideo from "./FeaturedVideo.astro";
 import { projects } from "../data/projects";
+import { pathFinder } from "../lib/paths";
 
 const featuredProject = projects.find(
     (project) => project.enabled && project.featured,
